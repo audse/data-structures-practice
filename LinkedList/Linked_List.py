@@ -3,10 +3,10 @@ class Node:
 
     next = None
 
-    def __init__ ( Node, data ):
+    def __init__ ( self, data ):
         Node.data = data
 
-    def set_next ( Node, data ):
+    def set_next ( self, data ):
         Node.next = data
 
 class Linked_List:
@@ -14,12 +14,12 @@ class Linked_List:
     head = None
 
     # Returns a non-linked list of all the items in the linked list
-    def get_list ( Linked_List ):
+    def get_list ( self ):
         
-        if ( Linked_List.head == None ):
+        if ( self.head == None ):
             return []
 
-        current = Linked_List.head
+        current = self.head
         new_list = [ current.data ]
 
         while ( current.next != None ):
@@ -28,17 +28,17 @@ class Linked_List:
 
         return new_list
 
-    def append ( Linked_List, data ):
+    def append ( self, data ):
 
         # If the linked list has no head,
         # create it
-        if ( Linked_List.head == None ):
-            Linked_List.head = Node(data)
+        if ( self.head == None ):
+            self.head = Node(data)
             return
 
         # Cycle through the linked list to find
         # the final item
-        current = Linked_List.head
+        current = self.head
         while ( current.next != None ):
             current = current.next
         
@@ -46,16 +46,16 @@ class Linked_List:
         current.set_next( Node(data) )
         return
     
-    def delete_value ( Linked_List, data ):
+    def delete_value ( self, data ):
 
         # If the linked list has no head,
         # we don't need to cycle through it
-        if ( Linked_List.head == None ):
+        if ( self.head == None ):
             return
         
         # Cycle through all items to find
         # the FIRST value that matches the param data
-        current = Linked_List.head
+        current = self.head
         while ( current.next != None ):
 
             # If the next value is the data we want to delete,
@@ -65,13 +65,3 @@ class Linked_List:
                 return
             
             current = current.next
-
-my_list = Linked_List()
-my_list.append( 0 )
-my_list.append( 1 )
-my_list.append( 2 )
-my_list.delete_value( 1 )
-
-print ( '\t' )
-print( my_list.get_list() )
-print ( '\t' )
