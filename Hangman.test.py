@@ -2,12 +2,64 @@ from getpass import getpass
 
 class Hangman:
 
-    body_parts = [ 'left leg', 'right leg', 'torso', 'left arm', 'right arm', 'head' ]
+    body_parts = [ 'left leg', 'right leg', 'left arm', 'right arm', 'torso', 'head' ]
     body_parts_left = 6
+
+    drawings = {
+        6: '''
+        ----|
+        |   o 
+        |  /|\\
+        |   /\\
+        ---------
+        ''',
+        5: '''
+        ----|
+        |   o
+        |  /|\\
+        |    \\
+        ---------
+        ''',
+        4: '''
+        ----|
+        |   o
+        |  /|\\
+        |  
+        ---------
+        ''',
+        3: '''
+        ----|
+        |   o
+        |   |\\
+        |
+        ---------
+        ''',
+        2: '''
+        ----|
+        |   o
+        |   |
+        |
+        ---------
+        ''',
+        1: '''
+        ----|
+        |   o
+        |
+        |
+        ---------
+        ''',
+        0: '''
+        ----|
+        |
+        |
+        |
+        ---------
+        ''',
+    }
 
     def remove_part ( self ):
         self.body_parts_left -= 1
-        print( 'The HANGMAN lost a part! He lost his ' + self.body_parts[self.body_parts_left-1] + '...' )
+        print( 'The HANGMAN lost a part! He lost his ' + self.body_parts[6-self.body_parts_left-1] + '...' )
         return self.body_parts_left
 
 class Game:
@@ -63,6 +115,7 @@ class Game:
             else:
                 self.print_event('incorrect')
                 self.hangman.remove_part()
+                print ( self.hangman.drawings[self.hangman.body_parts_left] )
 
                 if self.hangman.body_parts_left == 0:
                     self.print_event('dead')
